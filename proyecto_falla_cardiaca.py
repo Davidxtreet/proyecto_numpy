@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd  # Asegúrate de importar pandas
 from datasets import load_dataset
 
 # Cargamos el dataset
@@ -16,3 +17,18 @@ promedio_edad = np.mean(edades_np)
 
 # Imprimimos el resultado
 print(f"El promedio de edad de las personas participantes en el estudio es: {promedio_edad} años")
+
+# Convertimos la estructura Dataset en un DataFrame de Pandas
+df = pd.DataFrame(data)
+
+# Separar el DataFrame en dos: uno con personas que fallecieron y otro con el complemento
+personas_fallecidas = df[df['is_dead'] == 1]
+personas_no_fallecidas = df[df['is_dead'] == 0]
+
+# Calcular el promedio de edades para cada dataset
+promedio_edad_fallecidas = personas_fallecidas['age'].mean()
+promedio_edad_no_fallecidas = personas_no_fallecidas['age'].mean()
+
+# Imprimir los promedios de edades
+print(f"Promedio de edad de personas fallecidas: {promedio_edad_fallecidas:.2f} años")
+print(f"Promedio de edad de personas no fallecidas: {promedio_edad_no_fallecidas:.2f} años")
