@@ -32,3 +32,20 @@ promedio_edad_no_fallecidas = personas_no_fallecidas['age'].mean()
 # Imprimir los promedios de edades
 print(f"Promedio de edad de personas fallecidas: {promedio_edad_fallecidas:.2f} años")
 print(f"Promedio de edad de personas no fallecidas: {promedio_edad_no_fallecidas:.2f} años")
+
+# Verificar los tipos de datos en cada columna
+tipos_de_datos = df.dtypes
+
+# Calculamos la cantidad de hombres fumadores y mujeres fumadoras
+hombres_fumadores = df[(df['is_male'] == 1) & (df['is_smoker'] == 1)]
+mujeres_fumadoras = df[(df['is_male'] == 0) & (df['is_smoker'] == 1)]
+
+# Contamos las filas en cada grupo
+cantidad_hombres_fumadores = len(hombres_fumadores)
+cantidad_mujeres_fumadoras = len(mujeres_fumadoras)
+
+# Imprimimos los tipos de datos y la cantidad de fumadores por género
+print("Tipos de datos en cada columna:")
+print(tipos_de_datos)
+print("\nCantidad de hombres fumadores:", cantidad_hombres_fumadores)
+print("Cantidad de mujeres fumadoras:", cantidad_mujeres_fumadoras)
